@@ -18,7 +18,6 @@ accept = ["200..=299", "403", "429"]
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
 # --- Scope ---
-# Only check external http(s) links; ignore mail links and any fragment-only
-# anchors within the document.
+# Only check external http(s) links. Mail links are excluded by default
+# (include_mail defaults to false), so no extra setting is needed.
 scheme = ["https", "http"]
-exclude_mail = true
