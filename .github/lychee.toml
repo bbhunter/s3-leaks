@@ -1,0 +1,23 @@
+# Configuration for the lychee link checker (https://github.com/lycheeverse/lychee)
+# Used by .github/workflows/link-check.yml
+
+# --- Network behaviour ---
+timeout = 20            # seconds to wait per request
+max_retries = 3         # retry transient failures before giving up
+retry_wait_time = 2     # seconds between retries
+max_concurrency = 8     # keep concurrency modest to avoid rate limiting
+
+# --- What counts as a healthy link ---
+# Accept the 2xx success range plus 403 and 429: many news sites answer 403
+# (bot protection) or 429 (rate limit) to automated clients even though the
+# article is perfectly live. Accepting these avoids false positives while
+# still catching genuine rot (404 Not Found, 410 Gone, dead domains, etc.).
+accept = ["200..=299", "403", "429"]
+
+# Present a browser-like User-Agent to further reduce bot-blocking.
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
+
+# --- Scope ---
+# Only check external http(s) links. Mail links are excluded by default
+# (include_mail defaults to false), so no extra setting is needed.
+scheme = ["https", "http"]
