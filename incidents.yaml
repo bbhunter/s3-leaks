@@ -1,0 +1,240 @@
+# Source of truth for the s3-leaks lists.
+#
+# Edit THIS file, then run:  python scripts/generate_readme.py
+# to regenerate Readme1.md. Do not hand-edit Readme1.md.
+#
+# Fields:
+#   s3_leaks / elasticsearch:  date (YYYY-MM), description, url, notes
+#   iam_credentials:           date (YYYY[-MM]), org_date, root_cause, impact, relevance
+# Entries are sorted newest-first automatically by the generator.
+
+s3_leaks:
+- date: 2025-04
+  description: Thoughts of AWS Access key ID's from an S3 bucket
+  url: https://cybernews.com/security/aws-cloud-storage-bucket-ransomware-attacks/
+  notes: The keys to the AWS kingdom
+- date: 2025-03
+  description: 16,000 subscribers to Nine newspapers from Australia
+  url: https://www.news.com.au/technology/online/security/juicy-customer-data-belonging-to-thousands-of-aussies-leaked-from-nine/news-story/ea3e93e6d543d677dd810589ad993af2
+  notes: name, postal address and/or email address
+- date: 2025-01
+  description: North Dakota-based TV station Valley News Live had more than 1.8 million files
+  url: https://www.scworld.com/brief/over-1m-individuals-impacted-by-valley-news-live-data-leak
+  notes: Over a million of the exposed files were applicants' resumes and CVs containing names, phone numbers, home and email addresses, birthdates, employment histories, educational backgrounds
+- date: 2025-01
+  description: WebWork - tracking remote workers' time and productivity and billing services
+  url: https://www.scworld.com/brief/unsecured-amazon-s3-bucket-exposes-webwork-data
+  notes: 13 million logs and screenshots
+- date: 2024-12
+  description: operation that scanned millions of websites, exploiting vulnerabilities in improperly configured public sites
+  url: https://awsinsider.net/articles/2024/12/10/yet-another-misconfigured-aws-s3-bucket-exposes-sensitive-customer-data.aspx
+  notes: ''
+- date: 2023-11
+  description: MTC is a governmental agency responsible for regional transportation planning and financing in the San Francisco Bay Area.
+  url: https://cybernews.com/security/san-francisco-mtc-bart-data-leak/
+  notes: PDF files with Bay Area Rapid Transit (BART) carpool parking permits users' full names and home addresses
+- date: 2023-10
+  description: India’s national logistics portal exposed sensitive personal data, trade records
+  url: https://techcrunch.com/2023/10/02/india-national-logistics-portal-marine-data-expose
+  notes: Exposed sensitive personal data and various state and private trade records.
+- date: 2023-09
+  description: WBSC, headquartered in Switzerland, was established in 2013
+  url: https://cybernews.com/security/wbsc-data-leak-passports/
+  notes: bucket storing nearly 48,000 files. copies of 4,600 national passports.
+- date: 2023-09
+  description: PricewaterhouseCoopers' (PwC) Nigeria confidential data was stolen
+  url: https://cybernews.com/security/pwc-nigeria-tech-bootcamp-ids-exposed/
+  notes: 'The 24,668 exposed files include: Copies of passports/government-issued IDs Resumes with phone numbers, home and email addresses, and other private information Copies of degree/university certificates'
+- date: 2023-08
+  description: MPD FM, a facility management and security company providing services to various UK government departments
+  url: https://cybernews.com/security/mpd-fm-passport-data-leak/
+  notes: Passports/ VISAs/ National IDs/ Driving licenses/ Birth certificates/Vetting reports Right-to-work/ checks /Job contracts /Proof of address / Bank statements
+- date: 2023-05
+  description: London-based outsourcing giant Capita
+  url: https://techcrunch.com/2023/05/05/security-researcher-finds-trove-of-capita-data-exposed-online/
+  notes: exposed to the internet since 2016, contained approximately 3,000 files totaling 655GB in size
+- date: 2023-01
+  description: Pegasus Airlines Leaked 6.5TB of Data in AWS S3 Bucket Mess Up
+  url: https://medium.com/@syednashetali/pegasus-airlines-leaked-6-5tb-of-data-in-aws-s3-bucket-mess-up-5db20d96517e
+  notes: Airlines Leaked 6.5TB
+- date: 2022-08
+  description: 'Cloud Misconfig Exposes 3TB of Sensitive Airport Data in Amazon S3 Bucket: ''Lives at Stake'''
+  url: https://www.darkreading.com/application-security/cloud-misconfig-exposes-3tb-sensitive-airport-data-amazon-s3-bucket
+  notes: That is sure a lot of data on S3
+- date: 2022-07
+  description: McGraw Hill's S3 buckets exposed 100,000 students' grades and personal info
+  url: https://www.theregister.com/2022/12/20/mcgraw_hills_s3_buckets_exposed/
+  notes: 22 TB of data and over 117 million files
+- date: 2020-08
+  description: S3 bucket mess up exposed 182GB of senior US, Canada citizens data
+  url: https://www.hackread.com/s3-bucket-exposed-senior-us-canada-citizens-data/
+  notes: The misconfigured S3 bucket was owned by SeniorAdvisor, a consumer ratings and reviews website.
+- date: 2020-07
+  description: 'Twilio: Someone broke into our unsecured AWS S3 silo, added ''non-malicious'' code to our JavaScript SDK'
+  url: https://www.theregister.com/2020/07/21/twilio_javascript_sdk_code_injection/
+  notes: Attackers tried to update the javascript library hosted on the s3 buckets so this can be picked up by other clients
+- date: 2020-06
+  description: 7.2 million records were exposed, but not from the BHIM app
+  url: https://cloudsek.com/threatintelligence/7-2-million-records-were-exposed-but-not-from-the-bhim-app/
+  notes: ''
+- date: 2020-01
+  description: Exposed AWS buckets again implicated in multiple data leaks
+  url: https://www.computerweekly.com/news/252476870/Exposed-AWS-buckets-again-implicated-in-multiple-data-leaks
+  notes: Passport scans, tax documents, background checks, job applications, expense claims, contracts, emails and salary details relating to thousands of consultants working in the UK were exposed.
+- date: 2019-06
+  description: 'AWS S3 server leaks data from Fortune 100 companies: Ford, Netflix, TD Bank'
+  url: https://www.zdnet.com/article/aws-s3-server-leaks-data-from-fortune-100-companies-ford-netflix-td-bank/
+  notes: Attunity, an Israeli IT firm that provides data management, warehousing, and replication services for the world's biggest companies, has exposed some of its customers' data after it left three Amazon S3 buckets exposed on the internet without a password.
+- date: 2019-05
+  description: How a Vendor for Half the Fortune 100 Exposed a Terabyte of Backups
+  url: https://www.upguard.com/breaches/attunity-data-leak
+  notes: ''
+- date: 2018-10
+  description: Misconfigured database breaches thousands of MedCall Advisors patient files
+  url: https://www.healthcareitnews.com/news/update-misconfigured-database-breaches-thousands-medcall-advisors-patient-files
+  notes: names, email and postal addresses, phone numbers, dates of birth and Social Security numbers. Other files had recordings of patient evaluations and conversations with doctors, along with medications, allergies and other detailed personal health data.
+- date: 2018-03
+  description: Medical Records and Patient-Doctor Recordings Were Exposed
+  url: https://www.upguard.com/breaches/how-medical-records-and-patient-doctor-recordings-were-exposed
+  notes: information for employees of 181 business locations, as well as personally identifiable information (PII) for nearly 3,000 individuals was publicly exposed in an unsecured
+- date: 2018-03
+  description: Jewelry site accidentally leaks personal details (and plaintext passwords!) of 1.3M users
+  url: https://thenextweb.com/security/2018/03/14/jewelry-site-accidentally-leaks-personal-details-plaintext-passwords-1-3m-users/
+  notes: addresses, zip-codes, e-mail addresses, and IP addresses. He also claims the database contained plaintext passwords
+- date: 2018-02
+  description: 'S3 bucket open to world : Octoly'
+  url: https://www.upguard.com/breaches/cloud-leak-octoly
+  notes: real names, addresses, phone numbers, email addresses
+- date: 2018-01
+  description: Sensitive medical records on AWS bucket found to be publicly accessible
+  url: https://web.archive.org/web/2018/https://www.scmagazineuk.com/sensitive-medical-records-on-aws-bucket-found-to-be-publicly-accessible/article/738421/
+  notes: ''
+- date: 2017-12
+  description: 'Alteryx leave S3 bucket open for anonymous user : 120m american households exposed'
+  url: http://www.zdnet.com/article/alteryx-s3-leak-leaves-120m-american-households-exposed/
+  notes: Home addresses, contact information, mortgage status, financial histories
+- date: 2017-11
+  description: 111 GB of internal customer information from National Credit Federation, a Tampa, Florida-based credit repair service
+  url: https://www.upguard.com/breaches/credit-crunch-national-credit-federation
+  notes: '- SSN - Drivers license, credit reports'
+- date: 2017-11
+  description: Uber, the hack happened couple months back was brought to light in Nov 2017
+  url: https://blog.zwillgen.com/2017/09/05/s3-buckets-not-simple/
+  notes: personal information of 57 million Uber users and driver's license numbers
+- date: 2017-11
+  description: NSA leak exposes Red Disk, the Army's failed intelligence system
+  url: http://www.zdnet.com/article/nsa-leak-inscom-exposes-red-disk-intelligence-system/
+  notes: 100 gigabytes of data from an Army intelligence project, codenamed "Red Disk."
+- date: 2017-11
+  description: 'Australia data leak: Nearly 50,000 government and private staffers’ sensitive data publicly exposed'
+  url: https://www.ibtimes.co.uk/australia-data-leak-nearly-50000-government-private-staffers-sensitive-data-publicly-exposed-1645535
+  notes: S3 bucket left open by a contractor
+- date: 2017-10
+  description: How A Cloud Leak Exposed Accenture's Business
+  url: http://www.zdnet.com/article/accenture-left-a-huge-trove-of-client-passwords-on-exposed-servers/
+  notes: ''
+- date: 2017-10
+  description: Patient Home Monitoring Service Leaks Private Medical Data Online
+  url: https://kromtech.com/blog/security-center/patient-home-monitoring-service-leaks-private-medical-data-online
+  notes: publically accessible Amazon S3 47.5 GB / 316,363
+- date: 2017-09
+  description: 'Viacom : Open S3 bucket with AWS Keys, passwords, other sensitive info'
+  url: https://www.theregister.co.uk/2017/09/19/viacom_exposure_in_aws3_bucket_blunder/
+  notes: S3 bucket open to the world
+- date: 2017-09
+  description: Leaky S3 bucket sloshes deets of thousands with US security clearance
+  url: https://www.theregister.co.uk/2017/09/04/us_security_clearance_aws_breach/
+  notes: '- Bucket open to the world in the test account'
+- date: 2017-09
+  description: Millions of Time Warner Cable Customer Records Exposed in Third-Party Data Leak
+  url: http://gizmodo.com/millions-of-time-warner-customer-records-exposed-in-thi-1798701579
+  notes: ''
+- date: 2017-08
+  description: Indian Creditseva Data Breach
+  url: http://www.informationsecuritybuzz.com/expert-comments/indian-creditseva-data-breach/
+  notes: ''
+- date: 2017-08
+  description: Open AWS S3 bucket leaked hotel booking service data
+  url: https://www.theregister.co.uk/2017/08/22/open_aws_s3_bucket_leaked_hotel_booking_service_data_says_kromtech/
+  notes: ''
+- date: 2017-07
+  description: S3 bucket was set to authenticate all AWS users, not just Dow Jones users
+  url: https://www.theregister.co.uk/2017/07/18/dow_jones_index_of_customers_not_prices_leaks_from_aws_repo/
+  notes: ''
+- date: 2017-07
+  description: Massive WWE Leak Exposes 3 Million Wrestling Fans' Addresses, Ethnicities And More
+  url: https://www.forbes.com/sites/thomasbrewster/2017/07/06/massive-wwe-leak-exposes-3-million-wrestling-fans-addresses-ethnicities-and-more/#5a0bf96275dd
+  notes: ''
+- date: 2017-07
+  description: Verizon, the major telecommunications provider, has suffered a data security breach with over 14 million US customers' personal details exposed on the Internet
+  url: https://thehackernews.com/2017/07/over-14-million-verizon-customers-data.html
+  notes: ''
+- date: 2017-06
+  description: Personal information belonging to more than 198 million registered U.S. voters was exposed
+  url: https://www.itprotoday.com/amazon-web-services/faulty-aws-s3-configuration-exposes-personal-data-of-198m-u-s-voters
+  notes: ''
+- date: 2017-05
+  description: Top Defense Contractor Left Sensitive Pentagon Files on Amazon Server With No Password
+  url: http://gizmodo.com/top-defense-contractor-left-sensitive-pentagon-files-on-1795669632
+  notes: ''
+- date: 2017-05
+  description: Security company finds unsecured bucket of US military images on AWS
+  url: https://www.theregister.co.uk/2017/06/01/us_national_geospatial_intelligence_agency_leak/
+  notes: ''
+- date: 2017-04
+  description: A California auto loan company left the names, addresses, credit scores and partial Social Security numbers of up to 1 million people exposed
+  url: https://threatpost.com/auto-lender-exposes-loan-data-for-up-to-1-million-applicants/125216/
+  notes: ''
+- date: 2017-02
+  description: CHILDREN’S VOICE MESSAGES LEAKED IN CLOUDPETS DATABASE BREACH
+  url: https://threatpost.com/childrens-voice-messages-leaked-in-cloudpets-database-breach/123956/
+  notes: ''
+- date: 2017-01
+  description: Paytm S3 bucket misconfiguration allowing PUT operations
+  url: https://tutorgeeks.blogspot.com/2017/04/aws-s3-bucket-misconfiguration.html
+  notes: ''
+- date: 2013-03
+  description: Thousands of Amazon S3 buckets left open exposing private data
+  url: https://www.helpnetsecurity.com/2013/03/27/thousands-of-amazon-s3-buckets-left-open-exposing-private-data/
+  notes: ''
+elasticsearch:
+- date: 2017-09
+  description: AWS hosted elastic search servers hijacked
+  url: https://threatpost.com/thousands-of-elasticsearch-servers-hijacked-to-host-pos-malware/127965/
+  notes: ''
+iam_credentials:
+- date: '2025'
+  org_date: Large-scale AWS Keys Database & Ransomware Campaign (2025)
+  root_cause: Public server exposed >158M AWS secret key records; 1,229 active keys used to encrypt S3 buckets and demand ransom.
+  impact: Attackers encrypted S3 data using SSE-C without owner awareness.
+  relevance: Demonstrates that static keys become commodities → direct ransomware targeting S3.
+- date: '2024'
+  org_date: Large Leak of Environment Variables (2024)
+  root_cause: 'Palo Alto Networks study: >90,000 leaked `.env` files; 1,185 contained AWS access keys.'
+  impact: Keys leaked from repos, CI/CD logs, misconfigured files.
+  relevance: Reinforces that static/long-lived keys end up everywhere → high-risk credentials.
+- date: '2024'
+  org_date: Developer Canary Token Test (2024)
+  root_cause: Researcher placed a fake AWS key on GitHub; it was used within **minutes** (days when placed only on a website).
+  impact: Demonstrated active scanning for AWS keys in public code.
+  relevance: Proves exposure-to-compromise window is minutes → rapid detection & rotation required.
+- date: '2023'
+  org_date: Honey-Bucket S3 Recon Research (2023)
+  root_cause: Researchers deployed honey-buckets showing automated scans/downloads/deletes as soon as credentials or endpoints surfaced.
+  impact: Showed constant automated reconnaissance in the wild.
+  relevance: Demonstrates that once keys or endpoints leak, S3 becomes an immediate target.
+- date: '2020'
+  org_date: AWS Engineer Leak (Jan 2020)
+  root_cause: Public GitHub repo by an AWS engineer contained system credentials including AWS key-pairs (one named `rootkey.csv`).
+  impact: Repo discovered within ~30 minutes; AWS remediated same day.
+  relevance: Even cloud vendors have human error → continuous scanning is essential.
+- date: '2019'
+  org_date: Generic Code-Repo Exposures (2019–2020)
+  root_cause: Multiple cases of AWS keys committed to GitHub/VCS; Medium posts highlight accidental leaks & attacker automation.
+  impact: Often unnoticed but cumulatively large attack surface.
+  relevance: Emphasizes importance of scanning for `AKIA...`, reviewing last-used dates, disabling stale keys.
+- date: '2014'
+  org_date: www.codespaces.com (17th of June 2014)
+  root_cause: The attacker gained access to one of Code Spaces' AWS IAM access keys. The exact method has never been 100% confirmed publicly, but all evidence points to a compromised AWS access key, which allowed the attacker to log into the AWS console.
+  impact: The company was shut down.
+  relevance: Yes — one single AWS key can take a company down.
