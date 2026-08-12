@@ -209,6 +209,46 @@ s3_leaks:
   description: Thousands of Amazon S3 buckets left open exposing private data
   url: https://www.helpnetsecurity.com/2013/03/27/thousands-of-amazon-s3-buckets-left-open-exposing-private-data/
   notes: ''
+- date: 2022-01
+  description: "SEGA Europe left AWS keys and sensitive data in a public S3 bucket"
+  url: https://threatpost.com/sega-security-aws-s3-exposed-steam/177352/
+  notes: "Bucket held multiple AWS keys plus Steam and MailChimp keys and Football Manager forum data on hundreds of thousands of users; found by VPN Overview"
+- date: 2021-02
+  description: "Premier Diagnostics, a Utah COVID-19 testing service, exposed two S3 buckets"
+  url: https://www.comparitech.com/blog/information-security/utah-covid-test-center-leak/
+  notes: "~200,000 scans of driver's licenses, passports and insurance cards; about 52,000 people affected"
+- date: 2021-01
+  description: "20/20 Eye Care Network and Hearing Care Network breach; attacker downloaded then deleted S3 bucket contents"
+  url: https://www.hipaajournal.com/more-than-3-2-million-individuals-affected-by-20-20-hearing-care-network-data-breach/
+  notes: "3,253,822 health-plan members; names, Social Security numbers, dates of birth, member IDs"
+- date: 2020-11
+  description: "Prestige Software's Cloud Hospitality platform (used by Expedia, Hotels.com) exposed 10M+ files in an S3 bucket"
+  url: https://threatpost.com/millions-hotel-guests-worldwide-data-leak/161044/
+  notes: "24.4 GB / 10M+ records including full credit-card numbers, CVV, names and national IDs of hotel guests"
+- date: 2020-01
+  description: "THSuite, a cannabis point-of-sale system, exposed an S3 bucket of 85,000 files"
+  url: https://www.vpnmentor.com/blog/report-thsuite-breach/
+  notes: "30,000+ people; scanned government and medical IDs, ID numbers and signatures; found by vpnMentor"
+- date: 2019-07
+  description: "Capital One: an SSRF flaw let an attacker steal the WAF's IAM-role credentials and read 700+ S3 buckets"
+  url: https://krebsonsecurity.com/2019/08/what-we-can-learn-from-the-capital-one-hack/
+  notes: "106 million records / ~30 GB; landmark case of an over-permissioned IAM role with full S3 read access"
+- date: 2019-04
+  description: "Facebook data exposed by third-party app maker Cultura Colectiva in a public S3 bucket (cc-datalake)"
+  url: https://techcrunch.com/2019/04/03/facebook-records-exposed-server/
+  notes: "540 million records (146 GB): comments, likes, reactions, account names and Facebook IDs; found by UpGuard"
+- date: 2018-08
+  description: "GoDaddy server configuration exposed in a public S3 bucket (abbottgodaddy)"
+  url: https://threatpost.com/godaddy-leaks-map-of-the-internet-via-amazon-s3-cloud-bucket-misconfig/135009/
+  notes: "Config for tens of thousands of servers plus AWS pricing/discounts; bucket created by an AWS salesperson; found by UpGuard"
+- date: 2018-04
+  description: "LocalBlox, a data-scraping firm, exposed 48 million profiles in a public S3 bucket (lbdumps)"
+  url: https://www.theregister.com/2018/04/19/48_million_personal_profiles_left_exposed_by_data_firm_localblox/
+  notes: "1.2 TB; names, addresses, birthdates and data scraped from Facebook, LinkedIn, Twitter and Zillow; found by UpGuard"
+- date: 2018-02
+  description: "FedEx (via acquired Bongo International) left 119,000 scanned passports and IDs in an open S3 bucket"
+  url: https://www.theregister.com/2018/02/15/fedex_aws_s3_leak/
+  notes: "IDs from the US, Mexico, Canada, EU and more, exposed for years; found by Kromtech"
 elasticsearch:
 - date: 2017-09
   description: AWS hosted elastic search servers hijacked
@@ -265,3 +305,23 @@ iam_credentials:
   root_cause: A credential granting access to a customer-data server was hardcoded in a public GitHub repo for nearly five years (Dec 2017–Sep 2022).
   impact: Data for roughly 296,000 customers was potentially accessible via the exposed key.
   relevance: A long-lived static credential in source control means years of silent, undetected exposure.
+- date: '2019-08'
+  org_date: '<a href="https://www.bankinfosecurity.com/impervas-post-mortem-api-key-left-exposed-a-13238">Imperva (Cloud WAF / Incapsula) API Key Exposure (2019)</a>'
+  root_cause: An internet-exposed internal compute instance held an administrative AWS API key that was stolen and used to reach a database snapshot of Incapsula customer data.
+  impact: Customer emails, salted and hashed passwords, and some API and TLS keys exposed; 13,000+ passwords and 1,400 API keys rotated.
+  relevance: A single exposed long-lived API key gave direct access to customer data in AWS.
+- date: '2021-04'
+  org_date: '<a href="https://www.rapid7.com/blog/post/2021/04/16/codecov-discloses-supply-chain-compromise/">Codecov Bash Uploader Supply-Chain Breach (2021)</a>'
+  root_cause: Attackers tampered with Codecov's CI Bash Uploader script to exfiltrate environment variables — including AWS IAM keys — from customer CI pipelines.
+  impact: Up to 29,000 customers potentially affected (including Twitch, HashiCorp, Confluent); undetected for two months.
+  relevance: CI/CD is a mass-harvesting vector for long-lived AWS keys stored as pipeline secrets.
+- date: '2023-01'
+  org_date: '<a href="https://techcrunch.com/2023/01/05/circleci-breach/">CircleCI Secrets Breach (Jan 2023)</a>'
+  root_cause: Malware on an employee device stole an SSO session token, giving an attacker access to customer secrets and encryption keys stored in CircleCI.
+  impact: CircleCI forced all customers to rotate every secret, including AWS tokens, stored on the platform.
+  relevance: A compromised CI platform exposes every AWS credential its customers stored there.
+- date: '2018-02'
+  org_date: '<a href="https://www.cnbc.com/2018/02/21/hackers-hijack-teslas-cloud-system-to-mine-cryptocurrency-redlock.html">Tesla Cloud Cryptojacking (Feb 2018)</a>'
+  root_cause: An unsecured (no-password) Kubernetes admin console exposed Tesla's AWS credentials, which also had access to S3 buckets.
+  impact: Attackers used the credentials to run cryptomining; RedLock found non-public data was reachable in S3.
+  relevance: Exposed orchestration consoles leak the AWS keys behind them.
