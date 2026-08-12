@@ -9,14 +9,26 @@
 # Entries are sorted newest-first automatically by the generator.
 
 s3_leaks:
+- date: 2025-09
+  description: Public S3 bucket exposed ~273,000 NACH bank-transfer PDFs from 38 Indian banks and lenders; IPO-bound Aye Finance most affected (fintech Nupay took responsibility)
+  url: https://techcrunch.com/2025/09/26/thousands-of-indian-bank-transfer-records-found-online/
+  notes: Unredacted bank account numbers, transaction amounts, and in many files names, phone numbers and email addresses
+- date: 2025-09
+  description: Navy Federal Credit Union left 378 GB of internal backup files in a publicly accessible S3 bucket (discovered by researcher Jeremiah Fowler)
+  url: https://hackread.com/misconfigured-server-navy-federal-credit-union-data-leak/
+  notes: Hashed passwords, encryption keys, database structures and operational metadata in .gz/.sql/.twbx files
 - date: 2025-04
-  description: Thoughts of AWS Access key ID's from an S3 bucket
+  description: Thousands of AWS access key IDs exposed in an S3 bucket
   url: https://cybernews.com/security/aws-cloud-storage-bucket-ransomware-attacks/
   notes: The keys to the AWS kingdom
 - date: 2025-03
   description: 16,000 subscribers to Nine newspapers from Australia
   url: https://www.news.com.au/technology/online/security/juicy-customer-data-belonging-to-thousands-of-aussies-leaked-from-nine/news-story/ea3e93e6d543d677dd810589ad993af2
   notes: name, postal address and/or email address
+- date: 2025-03
+  description: ESHYFT, a New Jersey health-tech "Uber for nurses" app, exposed 108.8 GB in an unsecured S3 bucket for months (found by researcher Jeremiah Fowler)
+  url: https://www.theregister.com/2025/03/11/uber_for_nurses_exposes_86k/
+  notes: 86,341 records including scanned SSN cards and driver's licenses, medical/prescription documents, and a spreadsheet of 800,000+ shift entries
 - date: 2025-01
   description: North Dakota-based TV station Valley News Live had more than 1.8 million files
   url: https://www.scworld.com/brief/over-1m-individuals-impacted-by-valley-news-live-data-leak
@@ -136,7 +148,7 @@ s3_leaks:
 - date: 2017-10
   description: Patient Home Monitoring Service Leaks Private Medical Data Online
   url: https://kromtech.com/blog/security-center/patient-home-monitoring-service-leaks-private-medical-data-online
-  notes: publically accessible Amazon S3 47.5 GB / 316,363
+  notes: publicly accessible Amazon S3 47.5 GB / 316,363
 - date: 2017-09
   description: 'Viacom : Open S3 bucket with AWS Keys, passwords, other sensitive info'
   url: https://www.theregister.co.uk/2017/09/19/viacom_exposure_in_aws3_bucket_blunder/
@@ -238,3 +250,18 @@ iam_credentials:
   root_cause: The attacker gained access to one of Code Spaces' AWS IAM access keys. The exact method has never been 100% confirmed publicly, but all evidence points to a compromised AWS access key, which allowed the attacker to log into the AWS console.
   impact: The company was shut down.
   relevance: Yes — one single AWS key can take a company down.
+- date: '2024-01'
+  org_date: '<a href="https://www.bleepingcomputer.com/news/security/a-mishandled-github-token-exposed-mercedes-benz-source-code/">Mercedes-Benz GitHub Token Leak (Jan 2024)</a>'
+  root_cause: An employee leaked a GitHub token (exposed Sept 2023, discovered Jan 2024) that opened the company's GitHub Enterprise server, exposing AWS and Azure keys, connection strings, SSO passwords and API keys.
+  impact: Full source code plus embedded cloud credentials exposed; the token was revoked in January 2024.
+  relevance: Shows how a single leaked token cascades directly into cloud (IAM) key exposure.
+- date: '2023'
+  org_date: '<a href="https://unit42.paloaltonetworks.com/malicious-operations-of-exposed-iam-keys-cryptojacking/">EleKtra-Leak Campaign (2023)</a>'
+  root_cause: Unit 42 documented automated cloning of public GitHub repos to harvest exposed AWS IAM access keys within minutes, then launching EC2 instances for cryptojacking.
+  impact: 474 actor-controlled EC2 miner instances observed over roughly five weeks (Aug–Oct 2023).
+  relevance: Proves exposed IAM keys are found and weaponized automatically, at scale, almost immediately.
+- date: '2022-10'
+  org_date: '<a href="https://www.bleepingcomputer.com/news/security/toyota-discloses-data-leak-after-access-key-exposed-on-github/">Toyota GitHub Access Key Leak (Oct 2022)</a>'
+  root_cause: A credential granting access to a customer-data server was hardcoded in a public GitHub repo for nearly five years (Dec 2017–Sep 2022).
+  impact: Data for roughly 296,000 customers was potentially accessible via the exposed key.
+  relevance: A long-lived static credential in source control means years of silent, undetected exposure.
