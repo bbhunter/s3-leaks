@@ -5,6 +5,7 @@
 timeout = 20            # seconds to wait per request
 max_retries = 3         # retry transient failures before giving up
 retry_wait_time = 2     # seconds between retries
+max_redirects = 10      # news sites often chain several redirects (consent, CDN, canonical URL)
 max_concurrency = 8     # keep concurrency modest to avoid rate limiting
 
 # --- What counts as a healthy link ---
