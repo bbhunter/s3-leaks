@@ -42,12 +42,19 @@ def row(cells):
 
 def render_leak_table(entries):
     lines = [
-        row(["Date", "Description", "Notes"]),
-        "| ------------- | --------------------------------------------------------------|------------- |",
+        row(["Date", "Organization", "Category", "Description", "Records / Volume", "Notes"]),
+        row(["---"] * 6),
     ]
     for e in sorted(entries, key=lambda e: parse_date(e["date"]), reverse=True):
         anchor = f'<a href="{e["url"]}">{e["description"]}</a>'
-        lines.append(row([fmt_date(e["date"]), anchor, e.get("notes") or ""]))
+        lines.append(row([
+            fmt_date(e["date"]),
+            e.get("org") or "",
+            e.get("category") or "",
+            anchor,
+            e.get("records") or "",
+            e.get("notes") or "",
+        ]))
     return "\n".join(lines)
 
 
