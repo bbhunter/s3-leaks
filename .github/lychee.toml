@@ -11,9 +11,14 @@ max_concurrency = 8     # keep concurrency modest to avoid rate limiting
 # --- What counts as a healthy link ---
 # Accept the 2xx success range plus 403 and 429: many news sites answer 403
 # (bot protection) or 429 (rate limit) to automated clients even though the
-# article is perfectly live. Accepting these avoids false positives while
-# still catching genuine rot (404 Not Found, 410 Gone, dead domains, etc.).
-accept = ["200..=299", "403", "429"]
+# article is perfectly live. 503 (service unavailable) is the same story:
+# web.archive.org in particular sheds automated load that way, and its
+# snapshots reliably return 503 for a run or two before serving normally
+# again. None of these three codes ever indicate a dead link -- only that
+# the server declined to answer us right now. Accepting them avoids false
+# positives while still catching genuine rot (404 Not Found, 410 Gone,
+# dead domains, etc.).
+accept = ["200..=299", "403", "429", "503"]
 
 # Present a browser-like User-Agent to further reduce bot-blocking.
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
