@@ -438,6 +438,21 @@ elasticsearch:
   records: ~4,000 servers
   notes: ''
 iam_credentials:
+- date: 2026-02
+  org_date: <a href="https://www.theregister.com/2026/02/04/aws_cloud_breakin_ai_assist">AI-Assisted AWS Break-In in 8 Minutes (Feb 2026)</a>
+  root_cause: Valid test credentials harvested from a **public S3 bucket** belonged to an IAM user holding read/write on AWS Lambda; attacker escalated by replacing the code of an existing `EC2-init` function via `UpdateFunctionCode`/`UpdateFunctionConfiguration`.
+  impact: Administrative privileges in under 10 minutes, 19 AWS principals compromised, Bedrock models and GPU compute abused. Payload carried LLM tells (hallucinated AWS account IDs, non-existent GitHub repos) indicating AI-assisted offensive tooling.
+  relevance: Keys left in an open bucket became full account takeover in minutes → the bucket exposure and the IAM blast radius are one incident, not two.
+- date: 2026-01
+  org_date: <a href="https://securelist.com/amazon-ses-phishing-and-bec-attacks/119623/">Amazon SES Phishing & BEC Campaign (Jan 2026)</a>
+  root_cause: Attackers scan public repositories, configuration backups and Docker images for AWS IAM access keys, then use the hijacked account's Amazon SES permissions to send mail.
+  impact: Phishing and BEC delivered from legitimate SES infrastructure passes SPF, DKIM and DMARC checks; Kaspersky reported a sharp rise in SES-delivered phishing in early 2026, commonly spoofing e-signature notifications.
+  relevance: Leaked static keys get monetised without ever touching S3 data — the account's sending reputation is itself the asset.
+- date: '2026'
+  org_date: <a href="https://www.wiz.io/blog/cloud-threat-highlights-h1-2026">JINX-0163 / "FulcrumSec" Cloud Extortion (H1 2026)</a>
+  root_cause: Extortion crew that targets non-human identities — service accounts and IAM roles rather than end users — pivoting from a single over-privileged identity or an exposed state file to a full inventory of an organisation's secrets.
+  impact: Operates across AWS, Azure, GCP, Okta and Snowflake; victims extorted by an actor calling itself "FulcrumSec" claiming terabytes of stolen data. Wiz recorded a 60% rise in significant cloud incidents versus H2 2025.
+  relevance: Over-privileged roles and exposed Terraform state have overtaken user credentials as the route to an org's secrets.
 - date: '2025'
   org_date: <a href="https://www.bleepingcomputer.com/news/security/ransomware-abuses-amazon-aws-feature-to-encrypt-s3-buckets/">Large-scale AWS Keys Database & Ransomware Campaign (2025)</a>
   root_cause: Public server exposed >158M AWS secret key records; 1,229 active keys used to encrypt S3 buckets and demand ransom.
