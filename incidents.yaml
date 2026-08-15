@@ -129,13 +129,13 @@ s3_leaks:
   url: https://medium.com/@syednashetali/pegasus-airlines-leaked-6-5tb-of-data-in-aws-s3-bucket-mess-up-5db20d96517e
   records: 6.5 TB
   notes: Airlines Leaked 6.5TB
-- date: 2022-08
-  org: Airport security vendor (Colombia/Peru)
+- date: 2021-11
+  org: Securitas
   category: Transportation
-  description: 'Cloud Misconfig Exposes 3TB of Sensitive Airport Data in Amazon S3 Bucket: ''Lives at Stake'''
-  url: https://www.darkreading.com/application-security/cloud-misconfig-exposes-3tb-sensitive-airport-data-amazon-s3-bucket
-  records: 3 TB
-  notes: That is sure a lot of data on S3
+  description: Multinational security firm Securitas left an S3 bucket open, exposing employee PII and company data for at least four airports in Colombia and Peru (found by the SafetyDetectives research team on 28 October 2021)
+  url: https://www.safetydetectives.com/news/securitas-leak-report/
+  records: ~1.5M files / 3 TB
+  notes: Employee ID photos, badges and personal details from El Dorado, Alfonso Bonilla Aragón and José María Córdova airports in Colombia and Jorge Chávez in Peru, plus internal company documents; no authentication of any kind on the bucket
 - date: 2022-07
   org: McGraw Hill
   category: Education
