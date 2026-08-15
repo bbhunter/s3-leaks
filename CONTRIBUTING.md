@@ -52,6 +52,11 @@ AWS IAM credential entries:
   relevance: Why it matters for static keys / S3
 ```
 
+Research entries use the same fields as S3 and ElasticSearch entries, under the
+`research:` key. Use them for industry-wide studies of bucket exposure rather
+than single-organisation incidents — put the researcher in `org`, the headline
+scale in `records`, and set `category: Research`.
+
 Entries are sorted newest-first and the IAM table is numbered automatically —
 insert anywhere in the list and the generator takes care of ordering.
 
@@ -60,6 +65,11 @@ insert anywhere in the list and the generator takes care of ordering.
 1. **A working primary source.** Reporting from a security outlet or the
    researcher's own writeup. CI checks every link on each PR.
 2. **It must be an AWS S3 / IAM credential exposure** — not a generic breach.
+   This list is scoped to Amazon S3. Exposures from other object stores — Azure
+   Blob Storage, Google Cloud Storage, Cloudflare R2, DigitalOcean Spaces — are
+   out of scope no matter how large, and are closed rather than merged. The one
+   exception is the research section below, where cross-provider scans are
+   accepted because S3 is always a large share of the findings.
 3. **No duplicates.** Check `incidents.yaml` for the organisation and URL first.
 4. **Only what the source supports.** If a figure isn't in the source, leave it
    out rather than estimating.

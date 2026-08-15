@@ -4,7 +4,8 @@
 # to regenerate Readme1.md. Do not hand-edit Readme1.md.
 #
 # Fields:
-#   s3_leaks / elasticsearch:  date (YYYY-MM), org, category, description, url, records, notes
+#   s3_leaks / elasticsearch / research:
+#                              date (YYYY-MM), org, category, description, url, records, notes
 #   iam_credentials:           date (YYYY[-MM]), org_date, root_cause, impact, relevance
 # Entries are sorted newest-first automatically by the generator.
 
@@ -444,6 +445,13 @@ s3_leaks:
   records: 119,000 documents
   notes: IDs from the US, Mexico, Canada, EU and more, exposed for years; found by Kromtech
 elasticsearch:
+- date: 2026-05
+  org: Nextcloud
+  category: Technology
+  description: A hosting misconfiguration at European cloud provider Nextcloud left an Elasticsearch database publicly accessible, exposing internal company records (found by the Cybernews research team)
+  url: https://cybernews.com/security/nextcloud-cloud-provider-data-leak/
+  records: 367,000 records / 7.92 GB
+  notes: Invoices, contracts, employee details, emails and infrastructure setup scripts. Nextcloud closed the dataset two days after being contacted, notified the state data protection officer and found no evidence of exploitation; it stated the fault was in its hosting infrastructure and not the Nextcloud software itself
 - date: 2017-09
   org: Multiple
   category: Technology
@@ -537,3 +545,22 @@ iam_credentials:
   root_cause: An unsecured (no-password) Kubernetes admin console exposed Tesla's AWS credentials, which also had access to S3 buckets.
   impact: Attackers used the credentials to run cryptomining; RedLock found non-public data was reachable in S3.
   relevance: Exposed orchestration consoles leak the AWS keys behind them.
+
+# Industry-wide studies of bucket exposure, rather than single-organisation
+# incidents. Scans cover multiple cloud providers; they are listed here because
+# Amazon S3 is consistently a major share of what they find.
+research:
+- date: 2026-05
+  org: Mysterium VPN
+  category: Research
+  description: Scan of public cloud storage found 535,480 openly accessible buckets across Amazon S3, Google Cloud, Azure, DigitalOcean and Alibaba holding close to 20 billion files
+  url: https://www.scworld.com/brief/nearly-20-billion-files-exposed-in-misconfigured-cloud-buckets
+  records: 535,480 buckets / ~20B files
+  notes: Included 685,047 credential and key files (.env files, private keys) and close to 1 million database dumps (.sql, .bak), which give access to live systems rather than only to stored data
+- date: 2025-05
+  org: Cyble
+  category: Research
+  description: Vulnerability scanning across seven major cloud providers detected more than 660,000 misconfigured storage buckets leaking roughly 200 billion files
+  url: https://cybernews.com/security/misconfigured-cloud-buckets-leaking-200-billion-fil/
+  records: 660,000 buckets / 200B files
+  notes: Filtering for sensitive file types returned 5.6M Go source files, 110,000 environment credential files and more than 1.6M confidential documents; the exposed bucket count was over 30% higher than the same scan a year earlier
