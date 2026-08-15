@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Generate Readme1.md from incidents.yaml (the single source of truth).
+"""Generate README.md from incidents.yaml (the single source of truth).
 
 Usage:
-    python scripts/generate_readme.py            # (re)write Readme1.md
+    python scripts/generate_readme.py            # (re)write README.md
     python scripts/generate_readme.py --check    # exit non-zero if stale
 
 Workflow: edit incidents.yaml, then run this script. Never hand-edit
-Readme1.md -- it is a generated artifact and CI enforces that it stays in
+README.md -- it is a generated artifact and CI enforces that it stays in
 sync with incidents.yaml.
 """
 import argparse
@@ -17,7 +17,7 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "incidents.yaml"
-OUT = ROOT / "Readme1.md"
+OUT = ROOT / "README.md"
 
 MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -114,7 +114,7 @@ def build(data):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true",
-                    help="Exit non-zero if Readme1.md is out of sync with incidents.yaml")
+                    help="Exit non-zero if README.md is out of sync with incidents.yaml")
     args = ap.parse_args()
 
     data = yaml.safe_load(DATA.read_text(encoding="utf-8"))
@@ -124,11 +124,11 @@ def main():
         current = OUT.read_text(encoding="utf-8") if OUT.exists() else ""
         if current != content:
             sys.stderr.write(
-                "Readme1.md is out of sync with incidents.yaml.\n"
+                "README.md is out of sync with incidents.yaml.\n"
                 "Run:  python scripts/generate_readme.py\n"
             )
             return 1
-        print("Readme1.md is in sync with incidents.yaml.")
+        print("README.md is in sync with incidents.yaml.")
         return 0
 
     OUT.write_text(content, encoding="utf-8")

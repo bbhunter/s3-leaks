@@ -4,15 +4,15 @@ Thanks for helping keep this list accurate.
 
 ## How the list is maintained
 
-`incidents.yaml` is the **single source of truth**. `Readme1.md` is generated
-from it — do not hand-edit `Readme1.md`, CI will reject it.
+`incidents.yaml` is the **single source of truth**. `README.md` is generated
+from it — do not hand-edit `README.md`, CI will reject it.
 
 ```bash
 # 1. edit incidents.yaml (add or correct an entry)
 # 2. regenerate the markdown
 pip install pyyaml
 python scripts/generate_readme.py
-# 3. commit BOTH incidents.yaml and Readme1.md
+# 3. commit BOTH incidents.yaml and README.md
 ```
 
 `python scripts/generate_readme.py --check` tells you whether the two are in
@@ -81,7 +81,7 @@ Every pull request runs:
 | Check | What it enforces |
 | --- | --- |
 | `linkcheck` | Every URL still resolves (accepts 2xx, plus 403/429 from bot-protected sites) |
-| `generate-check` | `Readme1.md` matches what `incidents.yaml` generates |
+| `generate-check` | `README.md` matches what `incidents.yaml` generates |
 
 `linkcheck` also runs weekly on a schedule and opens an issue if a previously
 good link has rotted.

@@ -1,7 +1,7 @@
 # Source of truth for the s3-leaks lists.
 #
 # Edit THIS file, then run:  python scripts/generate_readme.py
-# to regenerate Readme1.md. Do not hand-edit Readme1.md.
+# to regenerate README.md. Do not hand-edit README.md.
 #
 # Fields:
 #   s3_leaks / elasticsearch / research:
@@ -213,13 +213,6 @@ s3_leaks:
   url: https://www.upguard.com/breaches/cloud-leak-octoly
   records: ~12,000 influencers
   notes: real names, addresses, phone numbers, email addresses
-- date: 2018-01
-  org: Patient Home Monitoring
-  category: Healthcare
-  description: Sensitive medical records on AWS bucket found to be publicly accessible
-  url: https://web.archive.org/web/2018/https://www.scmagazineuk.com/sensitive-medical-records-on-aws-bucket-found-to-be-publicly-accessible/article/738421/
-  records: 47.5 GB / ~316,000 files
-  notes: 'Reported alongside the Patient Home Monitoring exposure: 47.5 GB / roughly 316,000 PDF files of patient test results left without password protection'
 - date: 2017-12
   org: Alteryx / Experian
   category: Data Broker
