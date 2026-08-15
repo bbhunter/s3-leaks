@@ -1,20 +1,20 @@
 name: Link Check
 
-# Verifies that the source URLs cited in Readme1.md still resolve.
+# Verifies that the source URLs cited in README.md still resolve.
 #
-# - On pull requests that touch Readme1.md: fails the check if any link is
+# - On pull requests that touch README.md: fails the check if any link is
 #   broken, so rotted links are caught before they merge.
 # - Weekly (and on manual dispatch): runs without failing the workflow and,
 #   if anything is broken, opens a GitHub issue with the report so link rot
 #   that happens *after* merge still gets surfaced.
 #
-# Scoped to Readme1.md on purpose. When Readme1.md eventually graduates to
+# Scoped to README.md on purpose. When README.md eventually graduates to
 # replace README.md, add 'README.md' to the `args` and `paths` lists below.
 
 on:
   pull_request:
     paths:
-      - 'Readme1.md'
+      - 'README.md'
       - '.github/workflows/link-check.yml'
       - '.github/lychee.toml'
   schedule:
@@ -40,7 +40,7 @@ jobs:
           key: cache-lychee-${{ github.sha }}
           restore-keys: cache-lychee-
 
-      - name: Check links in Readme1.md
+      - name: Check links in README.md
         id: lychee
         uses: lycheeverse/lychee-action@v2
         with:
@@ -48,7 +48,7 @@ jobs:
             --config ./.github/lychee.toml
             --cache
             --no-progress
-            Readme1.md
+            README.md
           # Block the merge on PRs; on scheduled/manual runs don't fail the
           # workflow — the next step opens an issue instead.
           fail: ${{ github.event_name == 'pull_request' }}
@@ -57,5 +57,5 @@ jobs:
         if: ${{ github.event_name != 'pull_request' && steps.lychee.outputs.exit_code != 0 }}
         uses: peter-evans/create-issue-from-file@v5
         with:
-          title: "Broken links found in Readme1.md"
+          title: "Broken links found in README.md"
           content-filepath: ./lychee/out.md

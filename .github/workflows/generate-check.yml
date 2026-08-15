@@ -1,14 +1,14 @@
 name: Readme Generation Check
 
-# Enforces that Readme1.md is always the generated output of incidents.yaml.
+# Enforces that README.md is always the generated output of incidents.yaml.
 # If someone edits incidents.yaml without regenerating (or hand-edits
-# Readme1.md), this check fails and tells them to run the generator.
+# README.md), this check fails and tells them to run the generator.
 
 on:
   pull_request:
     paths:
       - 'incidents.yaml'
-      - 'Readme1.md'
+      - 'README.md'
       - 'scripts/generate_readme.py'
       - '.github/workflows/generate-check.yml'
   workflow_dispatch:
@@ -31,5 +31,5 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Verify Readme1.md is in sync with incidents.yaml
+      - name: Verify README.md is in sync with incidents.yaml
         run: python scripts/generate_readme.py --check
