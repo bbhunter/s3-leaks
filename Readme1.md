@@ -4,6 +4,8 @@
 
 Feel free to send in a PR if you know of other leaks.
 
+Scope: this list covers **Amazon S3** exposures. Leaks from other object stores (Azure Blob Storage, Google Cloud Storage, Cloudflare R2 and the like) are out of scope, however large.
+
 | Date | Organization | Category | Description | Records / Volume | Notes |
 | --- | --- | --- | --- | --- | --- |
 | Jun 2026 | Carla | Travel & Hospitality | <a href="https://cybernews.com/security/carla-car-rental-data-leak/">Car rental aggregator Carla left roughly 48,000 booking confirmation PDFs in an unsecured AWS bucket that was still taking several hundred new files a day (found by the Cybernews research team)</a> | ~48,000 PDFs | Names, email addresses, phone numbers, booking numbers, rental dates, costs and pickup locations; travel dates reveal when a customer's home sits empty. Carla restricted access after being notified and no misuse was found |
@@ -73,6 +75,7 @@ Feel free to send in a PR if you know of other leaks.
 
 | Date | Organization | Category | Description | Records / Volume | Notes |
 | --- | --- | --- | --- | --- | --- |
+| May 2026 | Nextcloud | Technology | <a href="https://cybernews.com/security/nextcloud-cloud-provider-data-leak/">A hosting misconfiguration at European cloud provider Nextcloud left an Elasticsearch database publicly accessible, exposing internal company records (found by the Cybernews research team)</a> | 367,000 records / 7.92 GB | Invoices, contracts, employee details, emails and infrastructure setup scripts. Nextcloud closed the dataset two days after being contacted, notified the state data protection officer and found no evidence of exploitation; it stated the fault was in its hosting infrastructure and not the Nextcloud software itself |
 | Sep 2017 | Multiple | Technology | <a href="https://threatpost.com/thousands-of-elasticsearch-servers-hijacked-to-host-pos-malware/127965/">AWS hosted elastic search servers hijacked</a> | ~4,000 servers |  |
 
 ## AWS IAM Static Credentials
@@ -98,3 +101,12 @@ Public incidents involving exposed AWS IAM static keys or AWS credentials.
 | **15** | **<a href="https://www.gitguardian.com/state-of-secrets-sprawl-on-github-2021">Generic Code-Repo Exposures (2019–2020)</a>** | Multiple cases of AWS keys committed to GitHub/VCS; Medium posts highlight accidental leaks & attacker automation. | Often unnoticed but cumulatively large attack surface. | Emphasizes importance of scanning for `AKIA...`, reviewing last-used dates, disabling stale keys. |
 | **16** | **<a href="https://www.cnbc.com/2018/02/21/hackers-hijack-teslas-cloud-system-to-mine-cryptocurrency-redlock.html">Tesla Cloud Cryptojacking (Feb 2018)</a>** | An unsecured (no-password) Kubernetes admin console exposed Tesla's AWS credentials, which also had access to S3 buckets. | Attackers used the credentials to run cryptomining; RedLock found non-public data was reachable in S3. | Exposed orchestration consoles leak the AWS keys behind them. |
 | **17** | **<a href="https://www.theregister.com/2014/06/18/code_spaces_destroyed/">www.codespaces.com (17th of June 2014)</a>** | The attacker gained access to one of Code Spaces' AWS IAM access keys. The exact method has never been 100% confirmed publicly, but all evidence points to a compromised AWS access key, which allowed the attacker to log into the AWS console. | The company was shut down. | Yes — one single AWS key can take a company down. |
+
+## Research & Scale Studies
+
+Industry-wide studies of bucket exposure, rather than single-organisation incidents. These scans span several cloud providers; they are listed here because Amazon S3 is consistently a large share of what they find.
+
+| Date | Organization | Category | Description | Records / Volume | Notes |
+| --- | --- | --- | --- | --- | --- |
+| May 2026 | Mysterium VPN | Research | <a href="https://www.scworld.com/brief/nearly-20-billion-files-exposed-in-misconfigured-cloud-buckets">Scan of public cloud storage found 535,480 openly accessible buckets across Amazon S3, Google Cloud, Azure, DigitalOcean and Alibaba holding close to 20 billion files</a> | 535,480 buckets / ~20B files | Included 685,047 credential and key files (.env files, private keys) and close to 1 million database dumps (.sql, .bak), which give access to live systems rather than only to stored data |
+| May 2025 | Cyble | Research | <a href="https://cybernews.com/security/misconfigured-cloud-buckets-leaking-200-billion-fil/">Vulnerability scanning across seven major cloud providers detected more than 660,000 misconfigured storage buckets leaking roughly 200 billion files</a> | 660,000 buckets / 200B files | Filtering for sensitive file types returned 5.6M Go source files, 110,000 environment credential files and more than 1.6M confidential documents; the exposed bucket count was over 30% higher than the same scan a year earlier |

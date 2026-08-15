@@ -83,6 +83,10 @@ def build(data):
         "",
         "Feel free to send in a PR if you know of other leaks.",
         "",
+        "Scope: this list covers **Amazon S3** exposures. Leaks from other object "
+        "stores (Azure Blob Storage, Google Cloud Storage, Cloudflare R2 and the "
+        "like) are out of scope, however large.",
+        "",
         render_leak_table(data["s3_leaks"]),
         "",
         "## ElasticSearch",
@@ -94,6 +98,14 @@ def build(data):
         "Public incidents involving exposed AWS IAM static keys or AWS credentials.",
         "",
         render_iam_table(data["iam_credentials"]),
+        "",
+        "## Research & Scale Studies",
+        "",
+        "Industry-wide studies of bucket exposure, rather than single-organisation "
+        "incidents. These scans span several cloud providers; they are listed here "
+        "because Amazon S3 is consistently a large share of what they find.",
+        "",
+        render_leak_table(data["research"]),
         "",
     ]
     return "\n".join(parts)
